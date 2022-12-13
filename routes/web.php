@@ -29,7 +29,8 @@ Route::get('/', [WebController::class, 'homePage']);
 Route::group(
     [
         'prefix' => 'categories',
-        'namespace' => 'App\Http\Controllers'
+        'namespace' => 'App\Http\Controllers',
+        'middleware' => 'can:category-list'
     ],
     function () {
         Route::get('/', 'CategoryController@index')->name('categories.index');
@@ -44,7 +45,8 @@ Route::group(
 Route::group(
     [
         'prefix' => 'menus',
-        'namespace' => 'App\Http\Controllers'
+        'namespace' => 'App\Http\Controllers',
+        'middleware' => 'can:menu-list'
     ],
     function () {
         Route::get('/', 'MenuController@index')->name('menus.index');
@@ -109,6 +111,30 @@ Route::group([
     Route::get('/edit/{id}', 'PostAdminController@edit')->name('post.edit');
     Route::post('/update/{id}', 'PostAdminController@update')->name('post.update');
     Route::post('/store', 'PostAdminController@store')->name('post.store');
+});
+
+Route::group([
+    'prefix' => 'users',
+    'namespace' => 'App\Http\Controllers'
+], function (){
+    Route::get('/', 'UserAdminController@index')->name('user.index');
+    Route::get('/create', 'UserAdminController@create')->name('user.create');
+    Route::get('/delete/{id}', 'UserAdminController@delete')->name('user.delete');
+    Route::get('/edit/{id}', 'UserAdminController@edit')->name('user.edit');
+    Route::post('/update/{id}', 'UserAdminController@update')->name('user.update');
+    Route::post('/store', 'UserAdminController@store')->name('user.store');
+});
+
+Route::group([
+    'prefix' => 'roles',
+    'namespace' => 'App\Http\Controllers'
+], function (){
+    Route::get('/', 'RoleAdminController@index')->name('role.index');
+    Route::get('/create', 'RoleAdminController@create')->name('role.create');
+    Route::get('/delete/{id}', 'RoleAdminController@delete')->name('role.delete');
+    Route::get('/edit/{id}', 'RoleAdminController@edit')->name('role.edit');
+    Route::post('/update/{id}', 'RoleAdminController@update')->name('role.update');
+    Route::post('/store', 'RoleAdminController@store')->name('role.store');
 });
 
 Route::get('contact-us', [ContactController::class, 'index']);

@@ -7,6 +7,10 @@ $(function(){
         placeholder: "Chọn danh mục",
         allowClear: true
     })
+    $('.role_user').select2({
+      placeholder: "Chọn vai trò",
+      allowClear: true
+  })
     let editor_config = {
         path_absolute : "/",
         selector: "textarea.tinymce_editor",

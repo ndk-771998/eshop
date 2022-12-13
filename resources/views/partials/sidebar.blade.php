@@ -96,6 +96,24 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('user.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+              Users
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('role.index') }}" class="nav-link">
+            <i class="nav-icon fas fa-tasks"></i>
+            <p>
+              Roles
+              <!-- <span class="right badge badge-danger">New</span> -->
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
